@@ -45,6 +45,7 @@ public:
 	int8_t      getTXPower();
 	uint8_t* 	getPayload();
 	size_t		getPayloadLength();
+	esp_ble_evt_type_t getEventType();
 	esp_ble_addr_type_t getAddressType();
 	void setAddressType(esp_ble_addr_type_t type);
 
@@ -68,6 +69,7 @@ private:
 	void setAdFlag(uint8_t adFlag);
 	void setAdvertizementResult(uint8_t* payload);
 	void setAppearance(uint16_t appearance);
+	void setEventType(esp_ble_evt_type_t eventType);
 	void setManufacturerData(std::string manufacturerData);
 	void setName(std::string name);
 	void setRSSI(int rssi);
@@ -91,6 +93,7 @@ private:
 	uint8_t     m_adFlag;
 	uint16_t    m_appearance;
 	int         m_deviceType;
+	esp_ble_evt_type_t m_eventType;
 	std::string m_manufacturerData;
 	std::string m_name;
 	BLEScan*    m_pScan;

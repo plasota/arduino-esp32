@@ -68,6 +68,19 @@ uint16_t BLEAdvertisedDevice::getAppearance() {
 
 
 /**
+ * @brief Get the %BLE event type.
+ * 
+ * A %BLE advertisement can be one of several types defined in the Bluetooth standard (known as PDU Types). These
+ * types define, among other things, if the advertisement is directed and if the device is seeking a connection.
+ *
+ * @return The %BLE advertisement event type
+ */
+esp_ble_evt_type_t BLEAdvertisedDevice::getEventType() {
+	return m_eventType;
+} // getEventType
+
+
+/**
  * @brief Get the manufacturer data.
  * @return The manufacturer data of the advertised device.
  */
@@ -416,6 +429,14 @@ void BLEAdvertisedDevice::setAppearance(uint16_t appearance) {
 	m_haveAppearance = true;
 	log_d("- appearance: %d", m_appearance);
 } // setAppearance
+
+/**
+ * @brief Set the %BLE event type for this device.
+ * @param [in] The discovered %BLE event type.
+ */
+void BLEAdvertisedDevice::setEventType(esp_ble_evt_type_t eventType) {
+	m_eventType = eventType;
+} // setEventType
 
 
 /**
