@@ -110,6 +110,7 @@ void BLEScan::handleGAPEvent(
 					advertisedDevice->parseAdvertisement((uint8_t*)param->scan_rst.ble_adv, param->scan_rst.adv_data_len + param->scan_rst.scan_rsp_len);
 					advertisedDevice->setScan(this);
 					advertisedDevice->setAddressType(param->scan_rst.ble_addr_type);
+					advertisedDevice->setEventType(param->scan_rst.ble_evt_type);
 
 					if (!found) {   // If we have previously seen this device, don't record it again.
 						m_scanResults.m_vectorAdvertisedDevices.insert(std::pair<std::string, BLEAdvertisedDevice*>(advertisedAddress.toString(), advertisedDevice));
